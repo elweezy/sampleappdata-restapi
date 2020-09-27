@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmartAppData.DAL\SmartAppData.DAL.csproj" />
+    <ProjectReference Include="..\SmartAppData.Repositories\SmartAppData.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Elasticsearch.Net.Aws" Version="7.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
+    <PackageReference Include="NEST" Version="7.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SmartAppData.DAL\SmartAppData.DAL.csproj" />
     <ProjectReference Include="..\SmartAppData.Repositories\SmartAppData.Repositories.csproj" />
   </ItemGroup>

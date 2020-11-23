@@ -18,6 +18,9 @@ using SmartAppData.Repositories.UnitOfWork;
 using SmartAppData.RestApi.Models.Auth;
 using SmartAppData.Services.CategoryService;
 using SmartAppData.Services.ProductService;
+using Elasticsearch.Net.Aws;
+using SmartAppData.Services.SearchService;
+using SmartAppData.RestApi.Extensions;
 
 namespace SmartAppDataRestApi
 {
@@ -26,6 +29,10 @@ namespace SmartAppDataRestApi
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            Environment.SetEnvironmentVariable("AWS_ACCESS_KEY_ID", configuration.GetSection("AWS:AccessKey").Value);
+            Environment.SetEnvironmentVariable("AWS_SECRET_ACCESS_KEY", configuration.GetSection("AWS:SecretKey").Value);
+            Environment.SetEnvironmentVariable("AWS_REGION", configuration.GetSection("AWS:Region").Value);
         }
 
         public IConfiguration Configuration { get; }
@@ -108,13 +115,16 @@ namespace SmartAppDataRestApi
                 });
             });
 
+
             services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
             services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
+            services.AddElasticSearch(Configuration);
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+            services.AddSingleton<ISearchService, SearchService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
 

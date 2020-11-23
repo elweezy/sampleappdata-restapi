@@ -7,8 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="App_Data\mgmt.json" />
+    <Content Remove="App_Data\properties.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Elasticsearch.Net" Version="7.10.0" />
+    <PackageReference Include="Elasticsearch.Net.Aws" Version="7.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
@@ -24,6 +31,11 @@
     <ProjectReference Include="..\SmartAppData.Extensions\SmartAppData.Extensions.csproj" />
     <ProjectReference Include="..\SmartAppData.Persistence.Contexts\SmartAppData.Persistence.Contexts.csproj" />
     <ProjectReference Include="..\SmartAppData.Services\SmartAppData.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="App_Data\mgmt.json" />
+    <None Include="App_Data\properties.json" />
   </ItemGroup>
 
 
